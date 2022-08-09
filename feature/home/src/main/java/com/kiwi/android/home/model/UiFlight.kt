@@ -6,7 +6,7 @@ data class UiFlight(
     val cityTo: String,
     val countryFrom: UiCountry,
     val countryTo: UiCountry,
-    val distance: Double,
+    val distance: Int,
     val popularity: Long,
     val flyDuration: String,
     val availability: UiFlyAvailability,

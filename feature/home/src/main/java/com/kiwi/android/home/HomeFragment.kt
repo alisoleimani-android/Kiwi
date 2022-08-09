@@ -24,18 +24,33 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setupUI() {
-        observeViewStateUpdates()
+
+        val adapter = createAdapter()
+        setupRecyclerView(adapter)
+
+        observeViewStateUpdates(adapter)
     }
 
-    private fun observeViewStateUpdates() {
-        viewModel.uiState.collectOn(viewLifecycleOwner) {
-            updateScreenState(it)
+    private fun setupRecyclerView(adapter: FlightsListAdapter) {
+        binding.flightList.apply {
+            this.adapter = adapter
+            setHasFixedSize(true)
         }
     }
 
-    private fun updateScreenState(state: HomeUiState) {
+    private fun observeViewStateUpdates(adapter: FlightsListAdapter) {
+        viewModel.uiState.collectOn(viewLifecycleOwner) {
+            updateScreenState(it, adapter)
+        }
+    }
+
+    private fun updateScreenState(state: HomeUiState, adapter: FlightsListAdapter) {
+        binding.uiState = state
+        adapter.submitList(state.suggestedFlights)
         handleFailures(state.failure)
     }
+
+    private fun createAdapter() = FlightsListAdapter()
 
     private fun handleFailures(failure: Event<Throwable>?) {
         val unhandledFailure = failure?.getContentIfNotHandled() ?: return

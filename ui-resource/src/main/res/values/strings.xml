@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Kiwi</string>
+    <string name="msg_an_error_occurred">Unknown error occurred</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- region  Toolbar  -->
+    <style name="Widget.Kiwi.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Kiwi.Toolbar</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Kiwi.Headline6</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.Kiwi.Subtitle1</item>
+    </style>
+
+    <style name="ThemeOverlay.Kiwi.Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+    </style>
+    <!--  endregion Toolbar  -->
+
+</resources>

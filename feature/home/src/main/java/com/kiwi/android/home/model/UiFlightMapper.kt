@@ -6,6 +6,7 @@ import com.kiwi.android.domain.model.FlyAvailability
 import com.kiwi.android.ui.BuildConfig
 import com.kiwi.android.ui.model.UiMapper
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 class UiFlightMapper @Inject constructor(
     private val uiCountryMapper: UiCountryMapper,
@@ -19,7 +20,7 @@ class UiFlightMapper @Inject constructor(
             cityTo = domainEntity.cityTo,
             countryFrom = uiCountryMapper.mapToView(domainEntity.countryFrom),
             countryTo = uiCountryMapper.mapToView(domainEntity.countryTo),
-            distance = domainEntity.distance,
+            distance = domainEntity.distance.roundToInt(),
             popularity = domainEntity.popularity,
             flyDuration = domainEntity.flyDuration,
             availability = availabilityMapper.mapToView(domainEntity.availability),

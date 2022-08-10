@@ -5,4 +5,5 @@ object BuildModules {
     const val CORE = ":core"
     const val UI_RESOURCE = ":ui-resource"
     const val HOME = ":feature:home"
+    const val TEST_COMMON = ":test-common"
 }

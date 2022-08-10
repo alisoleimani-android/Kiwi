@@ -44,7 +44,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun updateSuggestions () {
+    private fun updateSuggestions() {
         viewModelScope.launch(exceptionHandler) {
 
             _uiState.value = currentState.copy(loading = true)

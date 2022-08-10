@@ -1,6 +1,7 @@
 object AppModuleDependencies : Dependencies {
 
     override fun getDependencies(): List<Dependency> = listOf(
+        AllDependencies.constraintLayout,
         AllDependencies.coreKtx,
         AllDependencies.appcompat,
         AllDependencies.material,
@@ -22,15 +23,22 @@ object UiResourceModuleDependencies : Dependencies {
 object FeatureDependencies : Dependencies {
 
     override fun getDependencies(): List<Dependency> = listOf(
+        AllDependencies.constraintLayout,
         AllDependencies.coroutinesCore,
         AllDependencies.coroutinesAndroid,
+        AllDependencies.fragmentKtx,
         AllDependencies.hiltCompiler,
         AllDependencies.hiltAndroid,
         AllDependencies.hiltAndroidCompiler,
-        AllDependencies.fragmentKtx,
-        AllDependencies.navigationUi,
         AllDependencies.viewModel,
+        AllDependencies.navigationUi,
         AllDependencies.navigationFragment,
+        AllDependencies.junitTest,
+        AllDependencies.mockk,
+        AllDependencies.mockkAndroid,
+        AllDependencies.turbine,
+        AllDependencies.truth,
+        AllDependencies.coroutinesTest,
     )
 
 }
@@ -82,5 +90,12 @@ object UiCommonModuleDependencies : Dependencies {
     override fun getDependencies(): List<Dependency> = listOf(
         AllDependencies.material,
         AllDependencies.glide,
+    )
+}
+
+object TestCommonModuleDependencies : Dependencies {
+    override fun getDependencies(): List<Dependency> = listOf(
+        AllDependencies.junitImpl,
+        AllDependencies.coroutinesTestImpl,
     )
 }

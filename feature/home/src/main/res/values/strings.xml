@@ -2,4 +2,5 @@
 <resources>
     <string name="label_distance_placeholder">%dKm</string>
     <string name="label_suggested_flights">Suggested Flights</string>
+    <string name="label_change_theme">Change Theme</string>
 </resources>

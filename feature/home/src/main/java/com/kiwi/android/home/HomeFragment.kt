@@ -5,11 +5,14 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
+import com.kiwi.android.core.Theme
 import com.kiwi.android.core.collectOn
+import com.kiwi.android.domain.preferences.Preferences
 import com.kiwi.android.home.databinding.FragmentHomeBinding
 import com.kiwi.android.ui.model.Event
 import com.kiwi.android.ui.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -18,17 +21,41 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val viewModel by viewModels<HomeViewModel>()
 
+    @Inject
+    lateinit var preferences: Preferences
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
     }
 
     private fun setupUI() {
+        setupToolbar()
 
         val adapter = createAdapter()
         setupRecyclerView(adapter)
 
         observeViewStateUpdates(adapter)
+    }
+
+    private fun setupToolbar() {
+        when (preferences.theme) {
+            Theme.DARK -> {
+                binding.toolbar.menu.findItem(R.id.item_theme_mode)
+                    .setIcon(R.drawable.ic_light_mode)
+            }
+            Theme.LIGHT -> {
+                binding.toolbar.menu.findItem(R.id.item_theme_mode)
+                    .setIcon(R.drawable.ic_night_mode)
+            }
+        }
+
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.item_theme_mode -> switchTheme()
+            }
+            true
+        }
     }
 
     private fun setupRecyclerView(adapter: FlightsListAdapter) {
@@ -66,6 +93,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         if (snackbarMessage.isNotEmpty()) {
             Snackbar.make(requireView(), snackbarMessage, Snackbar.LENGTH_SHORT).show()
         }
+    }
+
+    private fun switchTheme() {
+        val newTheme = when (preferences.theme) {
+            Theme.DARK -> Theme.LIGHT
+            Theme.LIGHT -> Theme.DARK
+        }
+        preferences.theme = newTheme
     }
 
 }

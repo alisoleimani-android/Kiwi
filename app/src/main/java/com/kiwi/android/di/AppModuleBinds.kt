@@ -1,6 +1,7 @@
 package com.kiwi.android.di
 
 import com.kiwi.android.appinitializers.Initializer
+import com.kiwi.android.appinitializers.PreferencesInitializer
 import com.kiwi.android.appinitializers.TimberInitializer
 import com.kiwi.android.core.CoroutineDispatchersProvider
 import com.kiwi.android.core.DispatchersProvider
@@ -22,13 +23,17 @@ import javax.inject.Singleton
 @Module
 abstract class AppModuleBinds {
 
-    @Singleton
-    @Binds
-    abstract fun provideLogger(bind: KiwiLogger): Logger
-
     @Binds
     @IntoSet
     abstract fun provideTimberInitializer(bind: TimberInitializer): Initializer
+
+    @Binds
+    @IntoSet
+    abstract fun providePreferencesInitializer(bind: PreferencesInitializer): Initializer
+
+    @Singleton
+    @Binds
+    abstract fun provideLogger(bind: KiwiLogger): Logger
 
     @Binds
     abstract fun bindDispatchersProvider(provider: CoroutineDispatchersProvider): DispatchersProvider

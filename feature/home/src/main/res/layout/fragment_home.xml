@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_fragment_home"
             app:title="@string/label_suggested_flights"
             app:titleCentered="true" />
 
@@ -27,10 +28,10 @@
             android:id="@+id/flight_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
             tools:itemCount="2"
             tools:listitem="@layout/viewholder_flight" />
 
@@ -39,9 +40,9 @@
             android:layout_height="wrap_content"
             android:indeterminate="true"
             app:indeterminateAnimationType="disjoint"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:visibleIf="@{uiState.loading}" />
 

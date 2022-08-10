@@ -2,7 +2,7 @@
 <resources>
 
     <!-- region  Toolbar  -->
-    <style name="Widget.Kiwi.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+    <style name="Widget.Kiwi.Toolbar" parent="Widget.MaterialComponents.Toolbar.Surface">
         <item name="materialThemeOverlay">@style/ThemeOverlay.Kiwi.Toolbar</item>
         <item name="titleTextAppearance">@style/TextAppearance.Kiwi.Headline6</item>
         <item name="subtitleTextAppearance">@style/TextAppearance.Kiwi.Subtitle1</item>

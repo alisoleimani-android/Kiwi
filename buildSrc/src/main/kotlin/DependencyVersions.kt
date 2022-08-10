@@ -18,4 +18,11 @@ object DependencyVersions {
     const val moshiVersion = "1.13.0"
     const val kotlinxDatetimeVersion = "0.4.0"
     const val timberVersion = "5.0.1"
+
+    // Test dependency versions
+    const val junitVersion = "4.13.2"
+    const val truthVersion = "1.1.3"
+    const val coroutinesTestVersion = "1.6.1"
+    const val turbineVersion = "0.8.0"
+    const val mockkVersion = "1.11.0"
 }

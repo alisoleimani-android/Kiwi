@@ -74,5 +74,6 @@ dependencies {
     implementation(project(BuildModules.DATA))
     implementation(project(BuildModules.DOMAIN))
     implementation(project(BuildModules.HOME))
+    testImplementation(project(BuildModules.TEST_COMMON))
     addDependencies(AppModuleDependencies.getDependencies())
 }

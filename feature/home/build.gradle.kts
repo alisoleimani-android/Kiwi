@@ -58,5 +58,6 @@ dependencies {
     implementation(project(BuildModules.DOMAIN))
     implementation(project(BuildModules.UI_COMMON))
     implementation(project(BuildModules.UI_RESOURCE))
+    testImplementation(project(BuildModules.TEST_COMMON))
     addDependencies(FeatureDependencies.getDependencies())
 }

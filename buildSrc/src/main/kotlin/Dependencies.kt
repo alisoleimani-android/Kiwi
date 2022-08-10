@@ -3,12 +3,16 @@ interface Dependencies {
 }
 
 internal object AllDependencies {
+
+    // region Core
     val coreKtx = Dependency(
         dependency = "androidx.core:core-ktx",
         dependencyVersion = DependencyVersions.coreKtxVersion,
         dependencyType = DependencyType.IMPLEMENTATION,
     )
+    // endregion Core
 
+    // region UI
     val appcompat = Dependency(
         dependency = "androidx.appcompat:appcompat",
         dependencyVersion = DependencyVersions.appcompatVersion,
@@ -26,7 +30,9 @@ internal object AllDependencies {
         dependencyVersion = DependencyVersions.constraintLayoutVersion,
         dependencyType = DependencyType.IMPLEMENTATION
     )
+    // endregion UI
 
+    // region Reactive Streams & Parallelization
     val coroutinesAndroid = Dependency(
         dependency = "org.jetbrains.kotlinx:kotlinx-coroutines-android",
         dependencyVersion = DependencyVersions.coroutinesAndroidVersion,
@@ -38,7 +44,9 @@ internal object AllDependencies {
         dependencyVersion = DependencyVersions.coroutinesCoreVersion,
         dependencyType = DependencyType.IMPLEMENTATION
     )
+    // endregion Reactive Streams & Parallelization
 
+    // region Dependency Injection
     val hiltAndroid = Dependency(
         dependency = "com.google.dagger:hilt-android",
         dependencyVersion = DependencyVersions.hiltAndroidVersion,
@@ -56,19 +64,9 @@ internal object AllDependencies {
         dependencyVersion = DependencyVersions.hiltAndroidVersion,
         dependencyType = DependencyType.KAPT_TEST
     )
+    // endregion Dependency Injection
 
-    val glide = Dependency(
-        dependency = "com.github.bumptech.glide:glide",
-        dependencyVersion = DependencyVersions.glideVersion,
-        dependencyType = DependencyType.IMPLEMENTATION
-    )
-
-    val kotlinxDatetime = Dependency(
-        dependency = "org.jetbrains.kotlinx:kotlinx-datetime",
-        dependencyVersion = DependencyVersions.kotlinxDatetimeVersion,
-        dependencyType = DependencyType.IMPLEMENTATION
-    )
-
+    // region Architecture & Lifecycle
     val viewModel = Dependency(
         dependency = "androidx.lifecycle:lifecycle-viewmodel-ktx",
         dependencyVersion = DependencyVersions.lifecycleVersion,
@@ -86,7 +84,9 @@ internal object AllDependencies {
         dependencyVersion = DependencyVersions.fragmentKtx,
         dependencyType = DependencyType.IMPLEMENTATION
     )
+    // endregion Architecture & Lifecycle
 
+    // region Navigation
     val navigationFragment = Dependency(
         dependency = "androidx.navigation:navigation-fragment",
         dependencyVersion = DependencyVersions.navigationVersion,
@@ -98,6 +98,14 @@ internal object AllDependencies {
         dependencyVersion = DependencyVersions.navigationVersion,
         dependencyType = DependencyType.IMPLEMENTATION
     )
+    // endregion Navigation
+
+    // region Utils
+    val kotlinxDatetime = Dependency(
+        dependency = "org.jetbrains.kotlinx:kotlinx-datetime",
+        dependencyVersion = DependencyVersions.kotlinxDatetimeVersion,
+        dependencyType = DependencyType.IMPLEMENTATION
+    )
 
     val timber = Dependency(
         dependency = "com.jakewharton.timber:timber",
@@ -105,6 +113,14 @@ internal object AllDependencies {
         dependencyType = DependencyType.IMPLEMENTATION
     )
 
+    val glide = Dependency(
+        dependency = "com.github.bumptech.glide:glide",
+        dependencyVersion = DependencyVersions.glideVersion,
+        dependencyType = DependencyType.IMPLEMENTATION
+    )
+    // endregion Utils
+
+    // region Networking
     val retrofit = Dependency(
         dependency = "com.squareup.retrofit2:retrofit",
         dependencyVersion = DependencyVersions.retrofitVersion,
@@ -140,7 +156,9 @@ internal object AllDependencies {
         dependencyVersion = DependencyVersions.moshiVersion,
         dependencyType = DependencyType.KAPT
     )
+    // endregion Networking
 
+    // region Caching
     val roomRuntime = Dependency(
         dependency = "androidx.room:room-runtime",
         dependencyVersion = DependencyVersions.roomVersion,
@@ -158,6 +176,58 @@ internal object AllDependencies {
         dependencyVersion = DependencyVersions.roomVersion,
         dependencyType = DependencyType.KAPT
     )
+    // endregion Caching
+
+    // region Test dependencies
+    val junitTest = Dependency(
+        dependency = "junit:junit",
+        dependencyVersion = DependencyVersions.junitVersion,
+        dependencyType = DependencyType.TEST_IMPL
+    )
+
+    val junitImpl = Dependency(
+        dependency = "junit:junit",
+        dependencyVersion = DependencyVersions.junitVersion,
+        dependencyType = DependencyType.IMPLEMENTATION
+    )
+
+    val mockkAndroid = Dependency(
+        dependency = "io.mockk:mockk-android",
+        dependencyVersion = DependencyVersions.mockkVersion,
+        dependencyType = DependencyType.TEST_IMPL
+    )
+
+    val mockk = Dependency(
+        dependency = "io.mockk:mockk",
+        dependencyVersion = DependencyVersions.mockkVersion,
+        dependencyType = DependencyType.TEST_IMPL
+    )
+
+    val coroutinesTest = Dependency(
+        dependency = "org.jetbrains.kotlinx:kotlinx-coroutines-test",
+        dependencyVersion = DependencyVersions.coroutinesTestVersion,
+        dependencyType = DependencyType.TEST_IMPL
+    )
+
+    val coroutinesTestImpl = Dependency(
+        dependency = "org.jetbrains.kotlinx:kotlinx-coroutines-test",
+        dependencyVersion = DependencyVersions.coroutinesTestVersion,
+        dependencyType = DependencyType.IMPLEMENTATION
+    )
+
+    val truth = Dependency(
+        dependency = "com.google.truth:truth",
+        dependencyVersion = DependencyVersions.truthVersion,
+        dependencyType = DependencyType.TEST_IMPL
+    )
+
+    val turbine = Dependency(
+        dependency = "app.cash.turbine:turbine",
+        dependencyVersion = DependencyVersions.turbineVersion,
+        dependencyType = DependencyType.TEST_IMPL
+    )
+    // endregion Test dependencies
+
 }
 
 

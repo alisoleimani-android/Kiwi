@@ -11,6 +11,7 @@ import com.kiwi.android.ui.model.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,11 +25,9 @@ class HomeViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState
 
-    private val currentState get() = uiState.value
-
     private val exceptionHandler
-        get() = viewModelScope.createExceptionHandler {
-            _uiState.value = currentState.copy(loading = false, failure = Event(it))
+        get() = viewModelScope.createExceptionHandler { throwable ->
+            _uiState.update { it.copy(loading = false, failure = Event(throwable)) }
         }
 
     init {
@@ -38,20 +37,22 @@ class HomeViewModel @Inject constructor(
 
     private fun subscribeToFlightUpdates() {
         getFlights().collectOn(viewModelScope) { suggestedFlights ->
-            _uiState.value = currentState.copy(
-                suggestedFlights = suggestedFlights.map { uiFlightMapper.mapToView(it) }
-            )
+            _uiState.update { uiState ->
+                uiState.copy(
+                    suggestedFlights = suggestedFlights.map { uiFlightMapper.mapToView(it) }
+                )
+            }
         }
     }
 
     private fun updateSuggestions() {
         viewModelScope.launch(exceptionHandler) {
 
-            _uiState.value = currentState.copy(loading = true)
+            _uiState.update { it.copy(loading = true) }
 
             requestUpdateSuggestions()
 
-            _uiState.value = currentState.copy(loading = false)
+            _uiState.update { it.copy(loading = false) }
         }
     }
 
